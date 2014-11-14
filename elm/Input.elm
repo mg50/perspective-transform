@@ -1,4 +1,4 @@
-module Input (actions, mouseUp) where
+module Input (actions) where
 import Model (..)
 import Mouse
 

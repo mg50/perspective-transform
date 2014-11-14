@@ -1,7 +1,7 @@
 module Main where
 import Model (..)
 import Display (display)
-import Input (actions, mouseUp)
+import Input (actions)
 import Update (update)
 import Mouse
 import Window
