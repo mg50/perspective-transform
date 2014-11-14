@@ -1,10 +1,10 @@
 $(function() {
   var sourcePointsDiv = document.getElementById('source-points');
-  var source = Elm.embed(Elm.Points, sourcePointsDiv);
+  var source = Elm.embed(Elm.Main, sourcePointsDiv);
   source.ports.points.subscribe(setSourcePoints);
 
   var targetPointsDiv = document.getElementById('target-points');
-  var target = Elm.embed(Elm.Points, targetPointsDiv);
+  var target = Elm.embed(Elm.Main, targetPointsDiv);
   target.ports.points.subscribe(setTargetPoints);
 
   var image = $('img').get(0);
