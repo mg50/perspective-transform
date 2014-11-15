@@ -1,4 +1,5 @@
 module Util where
+import Either (..)
 
 closest : Float -> Float -> [(Float, Float)] -> Maybe Int
 closest x y points =
@@ -27,3 +28,17 @@ normalize w h (x, y) =
   let x' = x - toFloat w / 2
       y' = toFloat h / 2 - y
   in (x', y')
+
+changes : a -> Signal a -> Signal a
+changes a s =
+  let f val x = case x of
+                  Left a -> Right (a, val)
+                  Right (a, b) -> Right (b, val)
+      s' = foldp f (Left a) s
+      isNew v = case v of
+                  Left _ -> True
+                  Right (a, b) -> a /= b
+      newVal v = case v of
+                   Left a -> a
+                   Right (a, b) -> b
+  in newVal <~ keepIf isNew (Left a) s'
