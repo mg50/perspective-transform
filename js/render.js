@@ -17,14 +17,14 @@ function renderHomography(sourcePoints, targetPoints, image, canvas) {
   for(var i = 0, len = data.length; i < len; i += 4) {
     var j = i/4;
     var x = j % w;
-    var y = Math.floor((j - x) / h);
+    var y = Math.floor((j - x) / w);
 
     var result = numeric.dot(mat, [x, y, 1]);
     var preX = Math.round(result[0]/result[2]);
     var preY = Math.round(result[1]/result[2]);
 
     if(preX >= 0 && preX < w && preY >= 0 && preY < h) {
-      preI = (preY*w + preX)*4;
+      var preI = (preY*w + preX)*4;
       newData[i+0] = data[preI+0];
       newData[i+1] = data[preI+1];
       newData[i+2] = data[preI+2];
