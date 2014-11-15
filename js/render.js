@@ -51,7 +51,7 @@ function getInverseHomographyMatrix(sx1, sy1, sx2, sy2, sx3, sy3, sx4, sy4,
 }
 
 function makeRows(sx, sy, tx, ty) {
-  var r1 = [sx, sy, 1, 0, 0, 0, -1*sx*tx, -1*sx*ty];
+  var r1 = [sx, sy, 1, 0, 0, 0, -1*sx*tx, -1*sy*tx];
   var r2 = [0, 0, 0, sx, sy, 1, -1*sx*ty, -1*sy*ty];
   return [r1, r2];
 }
